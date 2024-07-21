@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "gdev-team3.sln"
+    "dotnet.defaultSolution": "gdev-team3.sln",
+    "dotnet.preferCSharpExtension": true
 }
