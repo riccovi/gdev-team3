@@ -1946,6 +1946,8 @@ GameObject:
   - component: {fileID: 706616870}
   - component: {fileID: 706616872}
   - component: {fileID: 706616871}
+  - component: {fileID: 706616873}
+  - component: {fileID: 706616874}
   m_Layer: 0
   m_Name: Wrench
   m_TagString: Untagged
@@ -1979,16 +1981,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b85c71823123743aec126741735695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpead: 50
+  rotateSpead: 950
   isRotating: 0
-  moveSpeed: 10
-  CallBackSpeed: 20
+  moveSpeed: 5
+  CallBackSpeed: 60
   targetPosition: {x: 0, y: 0, z: 0}
   mainCamera: {fileID: 0}
   CanCallBack: 0
   wrenchHolder: {fileID: 0}
   origRotation: {x: 0, y: 0, z: 0, w: 0}
-  origPos: {x: 0, y: 0, z: 0}
+  origPos: {fileID: 0}
+  distance23: 0
+  initialVelocity: {x: 0, y: 0, z: 0}
+  gravity: -9.81
+  launchForce: 6
+  WrenchImpact: 0
+  rb: {fileID: 0}
+  wrenchCollider: {fileID: 0}
+  stopWrenchForce: {fileID: 0}
 --- !u!212 &706616872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2039,6 +2049,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &706616873
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706616869}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &706616874
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706616869}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
 --- !u!1 &727823178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,7 +3644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377115019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.086937, y: -0.14576602, z: -10}
+  m_LocalPosition: {x: -22.428349, y: -0.15782046, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

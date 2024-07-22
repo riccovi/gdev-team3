@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2927326401589283258}
   m_Layer: 8
   m_Name: Ground2_Crane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179577308039623868}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.880003, y: 9.835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
