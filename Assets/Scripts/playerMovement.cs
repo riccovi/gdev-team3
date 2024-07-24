@@ -4,33 +4,40 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float movementSpeed;
-    public float jumpHeight;
-    public float jumpHeight2;
-
-    private float moveInput;
-
-    public Rigidbody2D rb;
-
-    public bool FacingRight = true;
-
-    public bool isGrounded;
-
+    [Header("SerialisedField")]
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask groundLayers;
 
+    [Header("Player Movement")]
+    public float movementSpeed;
+    public float jumpHeight;
+    public float jumpHeight2;
     public int ExtraJumps;
-    public int CurrentJumps;
-
-    public float jumpTimeCounter;
-    public float JumpTime;
-
-    public bool isJumping;
-
-    public bool firstJump;
-
     public float fallMultiplier=1.35f;
+    public float JumpTimeHold;
+
+    [Header("Player Interact")]
+
+    public float ThrowLenght=5;
+
+    //Private
+    private float moveInput;
+    private Rigidbody2D rb;
+
+    [HideInInspector]public bool FacingRight = true;
+
+    private bool isGrounded;
+    
+    private int CurrentJumps;
+
+    private float jumpTimeCounter;
+
+    private bool isJumping;
+
+    private bool firstJump;
+
+    public bool ThrowMode;
 
     // Start is called before the first frame update
     void Start()
@@ -49,15 +56,37 @@ public class playerMovement : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
 
-        // Method to flip sprite
-        if (FacingRight == false && moveInput > 0)
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // Method to flip sprite 
+        //(moveInput > 0 ||
+        //(moveInput < 0 ||
+
+        if(ThrowMode)
         {
-            flip();
+            if (FacingRight == false && mousePos.x > transform.position.x)
+            {
+                flip();
+            }
+            else if (FacingRight == true && (mousePos.x < transform.position.x ))
+            {
+                flip();
+            }
         }
-        else if (FacingRight == true && moveInput < 0)
+        else
         {
-            flip();
+            if (FacingRight == false && moveInput > 0 )
+            {
+                flip();
+            }
+            else if (FacingRight == true && moveInput < 0 )
+            {
+                flip();
+            }
         }
+        
+
+        
 
         CheckAndIncreaseFallSpeed();
     }
@@ -106,7 +135,7 @@ public class playerMovement : MonoBehaviour
             isJumping = true;
             if (isGrounded)
             {
-                jumpTimeCounter = JumpTime;
+                jumpTimeCounter = JumpTimeHold;
             }
             rb.velocity = Vector2.up * currentJumpHeigh;
             Debug.Log("Jump Height : " + currentJumpHeigh);

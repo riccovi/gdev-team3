@@ -25,13 +25,14 @@ public class Wrench : MonoBehaviour
 
     public Transform wrenchHolder;
 
+    public Quaternion origRotationGlobal;
     public Quaternion origRotation;
     public Transform origPos;
     //Use trigger to check damage
 
-    public float distance23;
+    public float distanceTwoLine;
 
-    private bool isTwoThirdsReached = false;
+    private bool ReachedDesiredLength = false;
 
     public Vector3 initialVelocity;
     public float gravity = -9.81f;
@@ -47,44 +48,89 @@ public class Wrench : MonoBehaviour
 
     public ParticleSystem stopWrenchForce;
 
+    public playerMovement player;
+
+    public string facing;
+
+    public DrawLineToMouse ThrowPOV;
+
+    public LineRenderer lineRenderer;
+
+    public bool onWayGround;
+
+    public LayerMask WrenchCollision;
+
     // Start is called before the first frame update
     void Start()
     {
+        lineRenderer = ThrowPOV.lineRenderer;
+        lineRenderer.enabled=false;
+
         rb=GetComponent<Rigidbody2D>();
         wrenchCollider=GetComponent<BoxCollider2D>();
 
         origRotation=transform.localRotation;
+        origRotationGlobal = transform.rotation;
         origPos=transform;
         mainCamera=Camera.main;
-        wrenchHolder=transform.parent;
-
- 
-        
+        wrenchHolder=transform.parent;     
     }
+    
 
     // Update is called once per frame
     void Update()
     {
 
-
+        if (Input.GetMouseButton(1) &&  !CanCallBack && !isClicked)
+        {
+            lineRenderer.enabled=true;
+            player.ThrowMode=true;
+        }
 
         selfRotation();
 
-        if (Input.GetMouseButtonDown(0) && !CanCallBack && !isClicked)
+        if (Input.GetMouseButtonUp(1) && !CanCallBack && !isClicked)
         {
+            // Cast a line from startPoint to endPoint
+            targetPosition = lineRenderer.GetPosition(1);
+        
+            RaycastHit2D hit = Physics2D.Raycast(origPos.position, targetPosition - origPos.position, Vector2.Distance(origPos.position, targetPosition),WrenchCollision);
+
+            Vector2 hitPosition=Vector2.zero;
+            // Check if the linecast hits something with the tag "Ground"
+            // Save the hit position
+
+            if (hit.collider != null )
+            {
+                // Save the hit position
+                hitPosition = hit.point;
+                Debug.Log("Hit Position: " + hit.transform.gameObject.name);
+                onWayGround=true;
+            }
+
             isClicked = true;
-            targetPosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane));
+            lineRenderer.enabled = false;
+            player.ThrowMode=false;
+
+            
+
+            if(hit.collider!=null)
+            {
+                targetPosition= new Vector3(hitPosition.x,hitPosition.y,0);
+            }
             targetPosition.z = 0; // Ensure z is 0 since it's a 2D plane
 
-            transform.parent=null;
-            distance23 = Vector2.Distance(origPos.position, targetPosition)*0.3f;
-            
+            transform.parent = null;
+
+            distanceTwoLine = Vector2.Distance(origPos.position, targetPosition);
+
             initialVelocity = (targetPosition - origPos.position).normalized * moveSpeed; // Set initial velocity
             hasChangedDirection = false;
-            
+
             StartCoroutine(ThrowWrenchCoroutine(targetPosition));
         }
 
+        // Return wrench on left mouse button click
         if (Input.GetMouseButtonDown(0) && CanCallBack)
         {
             isDamaged = true;
@@ -115,43 +161,59 @@ public class Wrench : MonoBehaviour
 
     private IEnumerator ThrowWrenchCoroutine(Vector3 targetPosition)
     {
+        Vector3 originalPos=transform.position;
+        if(player.FacingRight)
+        {
+            facing="Right";
+        }
+        else
+        {
+            facing="Left";
+        }
+
         wrenchCollider.enabled=true;
         isRotating = true;
-        isTwoThirdsReached=false;
+        ReachedDesiredLength=false;
 
         Vector3 velocity = initialVelocity;
         Vector3 position = transform.position;
         
+        //Travel Until You reach end point of lIne, maximum distance
         while (Vector2.Distance(transform.position, targetPosition) > 0.2f)
         {
+            //Debug.Log("Distance" + Vector2.Distance(transform.position, targetPosition));
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             
-            if (!isTwoThirdsReached && Vector2.Distance(transform.position,targetPosition) <= distance23)
-            {
-                isTwoThirdsReached = true;
-                transform.GetComponent<SpriteRenderer>().color=Color.red;
-                Debug.Log("Wrench has traveled 2/3 of the distance");
-
-                //stop travel            
-                ApplyForce(transform.position,targetPosition);
-
-                if(stopWrenchForce!=null)
-                {
-                    stopWrenchForce.Play();
-                }
-                break;
-
-            }
+            
             yield return null;
         }
 
+
+        transform.GetComponent<SpriteRenderer>().color=Color.red;
+
+        //Apply force to mimic the falling movement          
+        ApplyForce(originalPos,targetPosition);
+
+        if(stopWrenchForce!=null)
+        {
+            stopWrenchForce.Play();
+        }
+
         Debug.Log("Continue");
+
+        //Wait untill hit ground
         while(!WrenchImpact)
         {
             Debug.Log("Impact");
             yield return null;
         }
 
+        
+        //Reset Variables and get it ready for return
+        rb.velocity=Vector2.zero;
+        rb.angularVelocity =0;
+        rb.gravityScale=0;
+        
         //Put it on waiForImpact
         transform.parent = null;
         isRotating = false;
@@ -178,6 +240,24 @@ public class Wrench : MonoBehaviour
         
     }
 
+    public void StopThrowMovement()
+    {
+        StopAllCoroutines();
+
+        //Reset Variables and get it ready for return
+        rb.velocity=Vector2.zero;
+        rb.angularVelocity =0;
+        rb.gravityScale=0;
+        
+        //Put it on waiForImpact
+        transform.parent = null;
+        isRotating = false;
+        isDamaged = false;
+        CanCallBack = true;
+        isClicked = false;
+
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
         
         
@@ -186,6 +266,19 @@ public class Wrench : MonoBehaviour
             Debug.Log("Collided with Ground");   
             WrenchImpact=true;
         }
+        else if(other.transform.CompareTag("Player"))
+        {
+            Debug.Log("Collided with Player");  
+            if(CanCallBack || ReachedDesiredLength)
+            {
+                StartCoroutine(ReturnWrenchCoroutine()); 
+            }
+        }
+        else if(other.transform.CompareTag("LevelBoundaries"))
+        {
+            StartCoroutine(ReturnWrenchCoroutine()); 
+        }
+        
     }
 
 
@@ -211,9 +304,28 @@ public class Wrench : MonoBehaviour
             yield return null;
         }
 
-        transform.parent = wrenchHolder;
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = origRotation;
+        transform.parent = wrenchHolder;      
+        transform.localPosition = Vector3.zero; 
+
+        rb.velocity=Vector2.zero;
+        rb.angularVelocity =0;
+
+        if(facing=="Right" && player.FacingRight || facing=="Left" && !player.FacingRight)
+        {             
+            transform.localRotation = origRotation;
+        }
+        else if(facing=="Left" && player.FacingRight)
+        {
+            //rotate
+            transform.localRotation=Quaternion.Euler(0,0,-45);
+        }
+        else if(facing=="Right" && !player.FacingRight)
+        {
+            //rotate
+            transform.localRotation=Quaternion.Euler(0,0,-45);
+        }
+        
+        //transform.rotation = origRotationGlobal;
 
         Debug.Log("Rotation reset to: " + origRotation);
 
