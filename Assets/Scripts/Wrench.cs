@@ -16,10 +16,10 @@ public class Wrench : MonoBehaviour
 
     public Camera mainCamera;
 
-    private bool isClicked;
+    [HideInInspector]public bool isClicked;
 
     private bool isDamaged=false;
-    public bool CanCallBack=false;
+    [HideInInspector]public bool CanCallBack=false;
 
     private bool returnWrench;
 

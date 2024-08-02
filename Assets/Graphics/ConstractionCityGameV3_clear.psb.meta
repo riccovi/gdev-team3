@@ -292,8 +292,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 2725
-      y: 7976
+      x: 2433
+      y: 7906
       width: 101
       height: 101
     spriteID: f41632890ec28414a9df9dd179098d2e
@@ -306,7 +306,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 219, y: 7043}
+    uvTransform: {x: -73, y: 6973}
   - name: LampGround
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -314,7 +314,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 2577
+      x: 3159
       y: 7976
       width: 140
       height: 140
@@ -328,7 +328,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1831, y: 7625}
+    uvTransform: {x: -1249, y: 7625}
   - name: BoxInteractable
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -549,6 +549,50 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
+  - name: Ground2_Crane copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2577
+      y: 7976
+      width: 574
+      height: 163
+    spriteID: 750a4b150612bb94ba53488aeefc7bd4
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 702, y: 6537}
+  - name: Ground2_Crane copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1591
+      y: 7906
+      width: 834
+      height: 163
+    spriteID: 5b0e890aa0db136448e32be915e46c27
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -284, y: 6716}
   platformSettings:
   - name: Default
     overridden: 1
@@ -635,6 +679,20 @@ ScriptedImporter:
     spriteID: 1e5930e0213fde54a8e683293f2b3ca5
     layerID: 118
     mosaicPosition: {x: 6273, y: 6622}
+  - name: Ground2_Crane copy 2
+    spriteName: Ground2_Crane copy 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 750a4b150612bb94ba53488aeefc7bd4
+    layerID: 333
+    mosaicPosition: {x: 2577, y: 7976}
+  - name: Ground2_Crane copy
+    spriteName: Ground2_Crane copy
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5b0e890aa0db136448e32be915e46c27
+    layerID: 332
+    mosaicPosition: {x: 1591, y: 7906}
   - name: Ground2_Crane
     spriteName: Ground2_Crane
     isGroup: 0
@@ -648,14 +706,14 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: f41632890ec28414a9df9dd179098d2e
     layerID: 330
-    mosaicPosition: {x: 2725, y: 7976}
+    mosaicPosition: {x: 2433, y: 7906}
   - name: LampGround
     spriteName: LampGround
     isGroup: 0
     parentIndex: -1
     spriteID: c2c3135d99de5d14fbf1573ab625d037
     layerID: 301
-    mosaicPosition: {x: 2577, y: 7976}
+    mosaicPosition: {x: 3159, y: 7976}
   - name: BoxInteractable
     spriteName: BoxInteractable
     isGroup: 0

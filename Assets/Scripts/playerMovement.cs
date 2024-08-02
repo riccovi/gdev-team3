@@ -11,15 +11,34 @@ public class playerMovement : MonoBehaviour
 
     [Header("Player Movement")]
     public float movementSpeed;
+
+    public float PenalyMovement;
+     [Header("Player OnAir")]
     public float jumpHeight;
     public float jumpHeight2;
     public int ExtraJumps;
     public float fallMultiplier=1.35f;
     public float JumpTimeHold;
 
+    public bool canPlayerJump;
+
+     [Header("Player Ladder")]
+     public float climbSpeed;
+    public LayerMask Ladder;
+
+    public float detectDistance=15f;
+
+    public bool isClimbing;
+
+    public float inputVertical;
+
     [Header("Player Interact")]
 
     public float ThrowLenght=5;
+
+    [Header("Player Animation")]
+
+    public Animator anim;
 
     //Private
     private float moveInput;
@@ -27,7 +46,7 @@ public class playerMovement : MonoBehaviour
 
     [HideInInspector]public bool FacingRight = true;
 
-    private bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     
     private int CurrentJumps;
 
@@ -36,8 +55,9 @@ public class playerMovement : MonoBehaviour
     private bool isJumping;
 
     private bool firstJump;
+    
 
-    public bool ThrowMode;
+    [HideInInspector]public bool ThrowMode;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +65,7 @@ public class playerMovement : MonoBehaviour
         CurrentJumps = ExtraJumps;
         rb = GetComponent<Rigidbody2D>();
     }
+
 
     // Handle Physics
     private void FixedUpdate()
@@ -54,9 +75,45 @@ public class playerMovement : MonoBehaviour
 
         // Handle horizontal movement
         moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * (movementSpeed-PenalyMovement), rb.velocity.y);
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(isGrounded)
+        {
+            if(moveInput!=0)
+            {
+                anim.ResetTrigger("Idle");
+                anim.ResetTrigger("DoubleJump");
+                anim.SetTrigger("Run");                
+            }
+            else
+            {
+                anim.ResetTrigger("Run");
+                anim.ResetTrigger("DoubleJump");
+                anim.SetTrigger("Idle");
+            }
+        }
+        else
+        {
+            if(CurrentJumps==ExtraJumps)
+            {
+                //delay animation
+                anim.ResetTrigger("Idle");
+                anim.ResetTrigger("Run");
+                anim.ResetTrigger("DoubleJump");
+                anim.SetTrigger("Jump");
+            }
+            else
+            {
+                anim.ResetTrigger("Idle");
+                anim.ResetTrigger("Run");
+                anim.ResetTrigger("Jump");
+                anim.SetTrigger("DoubleJump");
+            }
+            
+        }
+        
 
         // Method to flip sprite 
         //(moveInput > 0 ||
@@ -86,9 +143,40 @@ public class playerMovement : MonoBehaviour
         }
         
 
-        
+        LadderHandler();
 
         CheckAndIncreaseFallSpeed();
+    }
+
+    public void LadderHandler()
+    {
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,Vector2.up,detectDistance,Ladder);
+
+        if(hitInfo.collider!=null)
+        {
+            if(hitInfo.collider.transform.CompareTag("Ladder"))
+            {
+                if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                {
+                    isClimbing=true;
+                }
+            }
+        }
+        else
+        {
+            isClimbing=false;
+        }
+
+        if(isClimbing)
+        {
+            inputVertical=Input.GetAxisRaw("Vertical");
+            rb.velocity = new Vector2(rb.velocity.x,inputVertical*climbSpeed);
+            rb.gravityScale=0;
+        }
+        else
+        {
+            rb.gravityScale=1; 
+        }
     }
 
     // Update is called once per frame
@@ -100,7 +188,11 @@ public class playerMovement : MonoBehaviour
             firstJump = true;
         }
 
-        HandleJumpInput();
+        if(canPlayerJump)
+        {
+            HandleJumpInput();
+        }
+
     }
 
      private void CheckAndIncreaseFallSpeed()
@@ -114,6 +206,7 @@ public class playerMovement : MonoBehaviour
 
     private void HandleJumpInput()
     {
+
         if (Input.GetKeyDown(KeyCode.Space) && (CurrentJumps > 0 || isGrounded))
         {
             // Add debug log to indicate the jump number
@@ -130,16 +223,18 @@ public class playerMovement : MonoBehaviour
             else
             {
                 currentJumpHeigh=jumpHeight2;
+
+                
             }
 
             isJumping = true;
             if (isGrounded)
             {
                 jumpTimeCounter = JumpTimeHold;
-            }
+            }            
+
             rb.velocity = Vector2.up * currentJumpHeigh;
-            Debug.Log("Jump Height : " + currentJumpHeigh);
-            
+            Debug.Log("Jump Height : " + currentJumpHeigh);           
 
             
        

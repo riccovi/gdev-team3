@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevierActivator : Activator
+public class reversePlatformEffector : MonoBehaviour
 {
+    public
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +15,5 @@ public class LevierActivator : Activator
     void Update()
     {
         
-    }
-
-    public override void onEnable()
-    {
-        Debug.Log("Activate Levier");
-    }
-
-    public override void onDissable()
-    {
-        Debug.Log("DisActivate Levier");
     }
 }

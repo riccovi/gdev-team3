@@ -8,6 +8,8 @@ TagManager:
   - LevelBoundaries
   - Levier
   - Wrench
+  - Ladder
+  - Concrete
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,8 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
+  - Ladder
+  - Destractable
   - 
   - 
   - 
