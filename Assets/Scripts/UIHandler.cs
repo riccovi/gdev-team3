@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UIHandler : MonoBehaviour
 
     [Header("Ivnentory")]
     public Transform InventoryParent;
+    public GameObject InvPrefab;
 
     private void Awake() {
         instance=this;
@@ -23,6 +25,46 @@ public class UIHandler : MonoBehaviour
         //setup UI health
     }
 
+    public void setInventory(int Size)
+    {
+        for(int i=0;i<Size;i++)
+        {
+            var obj = Instantiate(InvPrefab,InventoryParent);
+            obj.gameObject.SetActive(false);
+            obj.name="0x0";
+        }
+    }
+
+    public void addInventory(string ID,Sprite ico)
+    {
+        foreach (Transform child in InventoryParent)
+        {
+            if (!child.gameObject.activeInHierarchy)
+            {
+                child.gameObject.SetActive(true);
+                child.name=ID;
+                child.GetComponent<Image>().sprite=ico;
+                Debug.Log("Activated child: " + child.gameObject.name);
+                return;
+            }
+        }
+        Debug.Log("No inactive child found.");
+    }
+
+    public void removeInventory(string ID)
+    {
+        foreach (Transform child in InventoryParent)
+        {
+            if (child.name==ID)
+            {
+                child.gameObject.SetActive(false);
+                child.name="0x0";
+            }
+        }
+        Debug.Log("No inactive child found.");
+    }
+
+    
     public void setHealthAtStart(int MaxHealth)
     {
         for(int i=0;i<MaxHealth;i++)

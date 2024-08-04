@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundLayers;
 
     [Header("Player Movement")]
+    public float MaxSpeed;
     public float movementSpeed;
 
     public float PenalyMovement;
@@ -40,6 +41,12 @@ public class playerMovement : MonoBehaviour
 
     public Animator anim;
 
+    [Header("Player Interactable")]
+    public Rigidbody2D pullBox;
+
+    public bool isPooling;
+    public float PenalyPullSpeed;
+
     //Private
     private float moveInput;
     private Rigidbody2D rb;
@@ -64,12 +71,14 @@ public class playerMovement : MonoBehaviour
     {
         CurrentJumps = ExtraJumps;
         rb = GetComponent<Rigidbody2D>();
+        movementSpeed=MaxSpeed;
     }
 
 
     // Handle Physics
     private void FixedUpdate()
     {
+        
         // Handle ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayers);
 
@@ -78,6 +87,17 @@ public class playerMovement : MonoBehaviour
         rb.velocity = new Vector2(moveInput * (movementSpeed-PenalyMovement), rb.velocity.y);
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(isPooling && pullBox!=null)
+        {
+            if(movementSpeed==MaxSpeed)
+            {
+                movementSpeed=movementSpeed-PenalyPullSpeed;
+            }
+            Rigidbody2D boxRb = pullBox;
+            
+            boxRb.velocity = new Vector2(moveInput * movementSpeed, boxRb.velocity.y);    
+        }
 
         if(isGrounded)
         {
@@ -132,14 +152,19 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            if (FacingRight == false && moveInput > 0 )
+            if(!isPooling)
             {
-                flip();
+                if (FacingRight == false && moveInput > 0 )
+                {
+                    flip();
+                }
+                else if (FacingRight == true && moveInput < 0 )
+                {
+                    flip();
+                }
+
             }
-            else if (FacingRight == true && moveInput < 0 )
-            {
-                flip();
-            }
+            
         }
         
 
@@ -191,6 +216,17 @@ public class playerMovement : MonoBehaviour
         if(canPlayerJump)
         {
             HandleJumpInput();
+        }
+
+        if(pullBox!=null && Input.GetKeyDown(KeyCode.E))
+        {
+            isPooling=true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            isPooling=false;
+            movementSpeed=MaxSpeed;;
         }
 
     }

@@ -10,6 +10,7 @@ TagManager:
   - Wrench
   - Ladder
   - Concrete
+  - Rope
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Ground
   - Ladder
   - Destractable
-  - 
+  - Rope
   - 
   - 
   - 

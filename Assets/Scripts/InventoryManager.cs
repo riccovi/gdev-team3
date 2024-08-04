@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         CurrentInventory=0;
+        UIHandler.instance.setInventory(InventorySize);
     }
 
     // Update is called once per frame
@@ -27,11 +28,18 @@ public class InventoryManager : MonoBehaviour
     
     public void AddToInventory(ActivatableObject ObjectID,Sprite UI_Icon,GameObject objPrefab)
     {
+        if(objPrefab.name=="Upgrade_DoubleJump")
+        {
+            GameManager.instance.UpgradeDoubleJump();
+            Destroy(objPrefab);
+            return;
+        }
         if(CurrentInventory<=InventorySize)
         {
             if(ObjectID!=null)
             {
                 InventoryID.Add(ObjectID.gameObject.name);
+                UIHandler.instance.addInventory(ObjectID.gameObject.name,UI_Icon);
             }
             else
             {
@@ -62,6 +70,7 @@ public class InventoryManager : MonoBehaviour
         if(InventoryID.Contains(ObjectID))
         {
             InventoryID.Remove(ObjectID);
+            UIHandler.instance.removeInventory(ObjectID);
             CurrentInventory--;
         }
         

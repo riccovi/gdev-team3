@@ -18,7 +18,7 @@ public class Destractable : MonoBehaviour
         
     }
 
-    public void doDamage(int damage)
+    public virtual void doDamage(int damage)
     {
         currentHealth=currentHealth-damage;
 

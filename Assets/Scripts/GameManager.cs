@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public PlayStats playerStats;
+
+    public LevelManager LevelManager;
+
+    public playerMovement PlayerMove;
+
+    public bool LoadingLevel;
     // Start is called before the first frame update
     private void Awake() {
         instance=this;
@@ -14,6 +20,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        LoadingLevel=false;
+        PlayerMove=FindObjectOfType<playerMovement>();
         UIHandler.instance.setHealthAtStart(playerStats.MaxHealth);
     }
 
@@ -28,9 +36,25 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void UpgradeDoubleJump()
+    {
+        PlayerMove.ExtraJumps=1;
+    }
+    
+    public void EndLevel()
+    {
+        Debug.Log("End Level");
+    }
+
     public void GameOver()
     {
-        Debug.Log("GameOver");
+        if(!LoadingLevel)
+        {
+            LoadingLevel=true;
+            Debug.Log("GameOver");
+            LevelManager.RestartLevel();
+        }
+
     }
 
     public string ExtractNumbers(string input)

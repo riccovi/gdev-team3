@@ -22,6 +22,7 @@ public class boxHandler : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             player = other.GetComponent<playerMovement>();
+            player.pullBox= transform.parent.GetComponent<Rigidbody2D>();
             Debug.Log("Player on on side of box");
         }        
     }
@@ -31,6 +32,8 @@ public class boxHandler : MonoBehaviour
         if(other.CompareTag("Player") && player!=null)
         {        
             Debug.Log("Player exiting side of box");
+            player.pullBox=null;
+            player=null;
         }
     }  
 }
