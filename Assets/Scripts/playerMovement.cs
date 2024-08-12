@@ -47,6 +47,8 @@ public class playerMovement : MonoBehaviour
     public bool isPooling;
     public float PenalyPullSpeed;
 
+    [Header("Random")]
+
     //Private
     private float moveInput;
     private Rigidbody2D rb;
@@ -78,34 +80,45 @@ public class playerMovement : MonoBehaviour
     // Handle Physics
     private void FixedUpdate()
     {
-        
+        if(GameManager.instance.currentState==GameManager.gameStatus.Run)
+        {
+            MovementHandler();
+        }        
+
+        LadderHandler();
+
+        CheckAndIncreaseFallSpeed();
+    }
+
+    private void MovementHandler()
+    {
         // Handle ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayers);
 
         // Handle horizontal movement
         moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * (movementSpeed-PenalyMovement), rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * (movementSpeed - PenalyMovement), rb.velocity.y);
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(isPooling && pullBox!=null)
+        if (isPooling && pullBox != null)
         {
-            if(movementSpeed==MaxSpeed)
+            if (movementSpeed == MaxSpeed)
             {
-                movementSpeed=movementSpeed-PenalyPullSpeed;
+                movementSpeed = movementSpeed - PenalyPullSpeed;
             }
             Rigidbody2D boxRb = pullBox;
-            
-            boxRb.velocity = new Vector2(moveInput * movementSpeed, boxRb.velocity.y);    
+
+            boxRb.velocity = new Vector2(moveInput * movementSpeed, boxRb.velocity.y);
         }
 
-        if(isGrounded)
+        if (isGrounded)
         {
-            if(moveInput!=0)
+            if (moveInput != 0)
             {
                 anim.ResetTrigger("Idle");
                 anim.ResetTrigger("DoubleJump");
-                anim.SetTrigger("Run");                
+                anim.SetTrigger("Run");
             }
             else
             {
@@ -116,7 +129,7 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            if(CurrentJumps==ExtraJumps)
+            if (CurrentJumps == ExtraJumps)
             {
                 //delay animation
                 anim.ResetTrigger("Idle");
@@ -131,46 +144,41 @@ public class playerMovement : MonoBehaviour
                 anim.ResetTrigger("Jump");
                 anim.SetTrigger("DoubleJump");
             }
-            
+
         }
-        
+
 
         // Method to flip sprite 
         //(moveInput > 0 ||
         //(moveInput < 0 ||
 
-        if(ThrowMode)
+        if (ThrowMode)
         {
             if (FacingRight == false && mousePos.x > transform.position.x)
             {
                 flip();
             }
-            else if (FacingRight == true && (mousePos.x < transform.position.x ))
+            else if (FacingRight == true && (mousePos.x < transform.position.x))
             {
                 flip();
             }
         }
         else
         {
-            if(!isPooling)
+            if (!isPooling)
             {
-                if (FacingRight == false && moveInput > 0 )
+                if (FacingRight == false && moveInput > 0)
                 {
                     flip();
                 }
-                else if (FacingRight == true && moveInput < 0 )
+                else if (FacingRight == true && moveInput < 0)
                 {
                     flip();
                 }
 
             }
-            
+
         }
-        
-
-        LadderHandler();
-
-        CheckAndIncreaseFallSpeed();
     }
 
     public void LadderHandler()
@@ -213,21 +221,26 @@ public class playerMovement : MonoBehaviour
             firstJump = true;
         }
 
-        if(canPlayerJump)
-        {
-            HandleJumpInput();
-        }
+        
 
-        if(pullBox!=null && Input.GetKeyDown(KeyCode.E))
+        if(GameManager.instance.currentState==GameManager.gameStatus.Run)
         {
-            isPooling=true;
-        }
+            if(canPlayerJump)
+            {
+                HandleJumpInput();            
+            }
 
-        if(Input.GetKeyUp(KeyCode.E))
-        {
-            isPooling=false;
-            movementSpeed=MaxSpeed;;
-        }
+            if(pullBox!=null && Input.GetKeyDown(KeyCode.E))
+            {
+                isPooling=true;
+            }
+
+            if(Input.GetKeyUp(KeyCode.E))
+            {
+                isPooling=false;
+                movementSpeed=MaxSpeed;;
+            }
+        }      
 
     }
 

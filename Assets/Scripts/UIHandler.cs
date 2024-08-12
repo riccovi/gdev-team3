@@ -17,6 +17,9 @@ public class UIHandler : MonoBehaviour
     public Transform InventoryParent;
     public GameObject InvPrefab;
 
+    [Header("Pause")]
+    public GameObject PauseMenu;
+
     private void Awake() {
         instance=this;
     }

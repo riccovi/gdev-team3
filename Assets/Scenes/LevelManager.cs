@@ -75,6 +75,20 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    public void BackMainMenu()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Load the current scene again
+        LoadScene("0.MainMenu");
+
+
+        // Find and unload all inactive scenes
+        UnloadInactiveScenes();
+
+
+    }
+
     private void UnloadInactiveScenes()
     {
         for (int i = 0; i < SceneManager.sceneCount; i++)
@@ -89,7 +103,7 @@ public class LevelManager : MonoBehaviour
 
     public void StartGame()
     {
-
+        Debug.Log("Load first level");
         LevelManager.instance.LoadScene("1.Level0");
     }
 
@@ -117,7 +131,22 @@ public class LevelManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
 
-            FindObjectOfType<GameManager>().LevelManager=this;
+            if(SceneName !="0.MainMenu")
+            {
+                FindObjectOfType<GameManager>().LevelManager=this;
+            }   
+            else
+            {
+                var GameButtons = FindObjectsOfType<Button>();
+
+                foreach(Button but in GameButtons)
+                {
+                    if(but.name=="StartGame")
+                    {
+                        but.onClick.AddListener(StartGame);
+                    }
+                }
+            }         
             _loaderCanvas.SetActive(false);
         }
 

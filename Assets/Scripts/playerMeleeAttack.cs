@@ -15,43 +15,53 @@ public class playerMeleeAttack : MonoBehaviour
 
     public Wrench checkWrenchStatus;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!checkWrenchStatus.isClicked && !checkWrenchStatus.CanCallBack)
+        if(GameManager.instance.currentState==GameManager.gameStatus.Run)
         {
-            if(timeBetweenAttack<=0)
-            {
-                weapon.color=Color.white;
-                Debug.Log("Can Attack");
-                if(Input.GetMouseButtonDown(0))
-                {
-                    weapon.color=Color.red;
-                    Debug.Log("Press Attack");
-                    Collider2D[] destractable = Physics2D.OverlapCircleAll(attackPoint.position,attackRadius,MaskDestractable);
+            AttackControllers();
+        }       
 
-                    for(int i=0;i<destractable.Length;i++)
+    }
+
+    private void AttackControllers()
+    {
+        if (!checkWrenchStatus.isClicked && !checkWrenchStatus.CanCallBack)
+        {
+            if (timeBetweenAttack <= 0)
+            {
+                weapon.color = Color.white;
+                Debug.Log("Can Attack");
+                if (Input.GetMouseButtonDown(0))
+                {
+                    weapon.color = Color.red;
+                    Debug.Log("Press Attack");
+                    Collider2D[] destractable = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, MaskDestractable);
+
+                    for (int i = 0; i < destractable.Length; i++)
                     {
                         Debug.Log(destractable[i].name);
                         destractable[i].GetComponent<Destractable>().doDamage(damage);
-                        
+
                     }
-                    timeBetweenAttack=startTimeBtwAttack;
-                }            
+                    timeBetweenAttack = startTimeBtwAttack;
+                }
             }
             else
-            {            
-                timeBetweenAttack-=Time.deltaTime;
+            {
+                timeBetweenAttack -= Time.deltaTime;
             }
 
         }
-        
     }
 
     private void OnDrawGizmosSelected() {

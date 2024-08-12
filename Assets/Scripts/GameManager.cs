@@ -12,6 +12,15 @@ public class GameManager : MonoBehaviour
 
     public playerMovement PlayerMove;
 
+    public playerMeleeAttack PlayerAttack;
+    
+    public enum gameStatus
+    {
+        Pause,
+        Run
+    }
+    public gameStatus currentState;
+
     public bool LoadingLevel;
     // Start is called before the first frame update
     private void Awake() {
@@ -23,6 +32,9 @@ public class GameManager : MonoBehaviour
         LoadingLevel=false;
         PlayerMove=FindObjectOfType<playerMovement>();
         UIHandler.instance.setHealthAtStart(playerStats.MaxHealth);
+        PlayerAttack=FindObjectOfType<playerMeleeAttack>();
+
+        currentState=gameStatus.Run;
     }
 
     public void AddUIItem(Sprite Icon)
@@ -55,6 +67,25 @@ public class GameManager : MonoBehaviour
             LevelManager.RestartLevel();
         }
 
+    }
+
+    public void PauseMenu()
+    {
+        currentState= gameStatus.Pause;
+        UIHandler.instance.PauseMenu.SetActive(true);
+        Debug.Log("Pause");
+    }
+
+    public void BackMenu()
+    {
+        LevelManager.BackMainMenu();
+    }
+
+    public void UnPauseMenu()
+    {
+        currentState= gameStatus.Run;
+        UIHandler.instance.PauseMenu.SetActive(false);
+        Debug.Log("Un Pause");
     }
 
     public string ExtractNumbers(string input)
