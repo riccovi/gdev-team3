@@ -1103,6 +1103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1162,6 +1167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -1684,7 +1694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259360042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4572186, y: 0, z: 0}
+  m_LocalPosition: {x: -3.480838, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 344493827}
@@ -2081,6 +2091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -2135,6 +2150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -2840,6 +2860,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -2894,6 +2919,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -3573,6 +3603,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -3632,6 +3667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -4976,7 +5016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672797622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6996489, y: -6.1, z: 0}
+  m_LocalPosition: {x: -3.700436, y: -6.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 797046080}
@@ -5124,6 +5164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -5183,6 +5228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -5786,6 +5836,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -5840,6 +5895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -8904,6 +8964,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -8963,6 +9028,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -9141,6 +9211,7 @@ GameObject:
   - component: {fileID: 1392729688}
   - component: {fileID: 1392729687}
   - component: {fileID: 1392729684}
+  - component: {fileID: 1392729690}
   - component: {fileID: 1392729686}
   - component: {fileID: 1392729685}
   m_Layer: 0
@@ -9305,6 +9376,18 @@ MonoBehaviour:
   damage: 1
   weapon: {fileID: 766009705}
   checkWrenchStatus: {fileID: 766009704}
+--- !u!114 &1392729690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392729682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba12e06b7c9f424a963e1be6fe3b865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1398700782
 GameObject:
   m_ObjectHideFlags: 0
@@ -9331,7 +9414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398700782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3048127, y: 0, z: 0}
+  m_LocalPosition: {x: -2.320559, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 265400366}
@@ -9375,6 +9458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Nails (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
@@ -9435,6 +9523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -10784,7 +10877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690885027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.365795, y: -6.9647737, z: -10}
+  m_LocalPosition: {x: -31.444527, y: -6.9792476, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12849,6 +12942,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nails
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286863973735862, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286863973735864, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_RootOrder
@@ -12908,6 +13006,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90908c775c3fe8a43807da05ef52ce9c, type: 3}
@@ -14020,7 +14123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140559403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1524063, y: 0, z: 0}
+  m_LocalPosition: {x: -1.1602795, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1850490972}
