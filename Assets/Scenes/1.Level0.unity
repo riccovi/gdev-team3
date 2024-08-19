@@ -2644,6 +2644,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8183286864739110241, guid: 90908c775c3fe8a43807da05ef52ce9c,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8183286864739110268, guid: 90908c775c3fe8a43807da05ef52ce9c,
         type: 3}
       propertyPath: m_TagString
@@ -5282,6 +5287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pool_fallingObjects (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429355750785141618, guid: af04a06e9e86044459dd719fcc37a32a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pool
       objectReference: {fileID: 0}
     - target: {fileID: 1429355750785141620, guid: af04a06e9e86044459dd719fcc37a32a,
         type: 3}
@@ -8712,6 +8722,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pool_fallingObjects (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1429355750785141618, guid: af04a06e9e86044459dd719fcc37a32a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pool
+      objectReference: {fileID: 0}
     - target: {fileID: 1429355750785141620, guid: af04a06e9e86044459dd719fcc37a32a,
         type: 3}
       propertyPath: m_RootOrder
@@ -10105,6 +10120,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1265375269}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1232076412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1429355750785141618, guid: af04a06e9e86044459dd719fcc37a32a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1060444775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1232076413
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232076412}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1233999592
 GameObject:
   m_ObjectHideFlags: 0
@@ -12855,6 +12902,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 943791995}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1517012929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1429355750785141618, guid: af04a06e9e86044459dd719fcc37a32a,
+    type: 3}
+  m_PrefabInstance: {fileID: 576120652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1517012930
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517012929}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!4 &1524201518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7295762788422944954, guid: 89ceb497342321e45bd99124128bdc5b,
@@ -13821,6 +13900,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 892219350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1658033258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1429355750785141618, guid: af04a06e9e86044459dd719fcc37a32a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429355748973109681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1658033259
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658033258}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1674513275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7720264169157570823, guid: b2187f5b6a4370b429abbceb85894a75,
@@ -15432,6 +15543,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1897215206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1903488917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1969796625089333323, guid: c2828a2b7e74d5b48bfe1dd405290d78,
+    type: 3}
+  m_PrefabInstance: {fileID: 5960424241186918100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1903488918
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903488917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &1903922793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17275,6 +17418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pool_fallingObjects
       objectReference: {fileID: 0}
+    - target: {fileID: 1429355750785141618, guid: af04a06e9e86044459dd719fcc37a32a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pool
+      objectReference: {fileID: 0}
     - target: {fileID: 1429355750785141620, guid: af04a06e9e86044459dd719fcc37a32a,
         type: 3}
       propertyPath: m_RootOrder
@@ -17773,6 +17921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FallingTool
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969796625089333323, guid: c2828a2b7e74d5b48bfe1dd405290d78,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pool
       objectReference: {fileID: 0}
     - target: {fileID: 9033814702435674300, guid: c2828a2b7e74d5b48bfe1dd405290d78,
         type: 3}
