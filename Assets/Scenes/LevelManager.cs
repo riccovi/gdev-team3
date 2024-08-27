@@ -75,6 +75,30 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    public void MoveToNextScene()
+    {
+        // Get the current active scene
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Calculate the next scene's build index
+        int nextSceneIndex = currentScene.buildIndex + 1;
+
+        // Check if the next scene index is within the valid range
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            // Load the next scene
+            LoadScene(currentScene.name);
+        }
+        else
+        {
+            // If no more scenes exist, return to the "0.MainMenu" scene
+            LoadScene("0.MainMenu");
+        }
+
+        // Unload all inactive scenes to free up memory
+        UnloadInactiveScenes();
+    }
+
     public void BackMainMenu()
     {
         Scene currentScene = SceneManager.GetActiveScene();

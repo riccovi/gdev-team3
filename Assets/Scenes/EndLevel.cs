@@ -19,7 +19,15 @@ public class EndLevel : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player"))
         {
-            GameManager.instance.EndLevel();
+            var player = other.GetComponent<playerMovement>();
+            player.ResetAllAnimationTrigger();
+            player.anim.SetTrigger("Idle");
+
+            Sound_Manager.instance.PlayerSoundHandler_Loop.Stop();
+            Sound_Manager.instance.PlayerSoundHandler_Once.Stop();
+
+            GameManager.instance.GameOverSequence(true);
+
         }
     }
 }

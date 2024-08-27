@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Wrench : MonoBehaviour
 {
+    public GameObject graphics;
     public float rotateSpead;
     public bool isRotating;
 
@@ -76,6 +77,10 @@ public class Wrench : MonoBehaviour
         wrenchHolder=transform.parent;     
     }
     
+    public void EnableGraphics()
+    {
+        graphics.SetActive(true);
+    }
 
     // Update is called once per frame
     void Update()
@@ -83,14 +88,23 @@ public class Wrench : MonoBehaviour
 
         if (Input.GetMouseButton(1) &&  !CanCallBack && !isClicked)
         {
+            Invoke("EnableGraphics",0.2f);
             lineRenderer.enabled=true;
             player.ThrowMode=true;
+
+            player.ReplaceRunAnimationThorw();
+            
+            //Animation
+            player.RangeAttack_getready();
         }
 
         selfRotation();
 
         if (Input.GetMouseButtonUp(1) && !CanCallBack && !isClicked)
         {
+            //Animation
+            player.RangeAttack_release();
+
             // Cast a line from startPoint to endPoint
             targetPosition = lineRenderer.GetPosition(1);
         
@@ -110,7 +124,7 @@ public class Wrench : MonoBehaviour
 
             isClicked = true;
             lineRenderer.enabled = false;
-            player.ThrowMode=false;
+            
 
             
 
@@ -128,6 +142,8 @@ public class Wrench : MonoBehaviour
             hasChangedDirection = false;
 
             StartCoroutine(ThrowWrenchCoroutine(targetPosition));
+
+            
         }
 
         // Return wrench on left mouse button click
@@ -171,7 +187,10 @@ public class Wrench : MonoBehaviour
             facing="Left";
         }
 
-        wrenchCollider.enabled=true;
+        //enable after 0.5sec in order not to collider with player
+        //wrenchCollider.enabled=true;
+
+        StartCoroutine(delayColliderEnable());
         isRotating = true;
         ReachedDesiredLength=false;
 
@@ -221,6 +240,16 @@ public class Wrench : MonoBehaviour
         CanCallBack = true;
         isClicked = false;
         yield return null;
+    }
+
+    public IEnumerator delayColliderEnable()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        //Debug.Break();
+
+        wrenchCollider.enabled=true;
+        
     }
 
     void ApplyForce(Vector2 currentPos,Vector2 endPos)
@@ -291,9 +320,20 @@ public class Wrench : MonoBehaviour
 
     private IEnumerator ReturnWrenchCoroutine()
     {
+        Sound_Manager.instance.playerSoundOnce("RangeAttack_CallBack");
+        
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.gravityScale=0;
         wrenchCollider.enabled=false;
+
+        if(player.moveInput==0)
+        {
+            player.ReplaceRunAnimation(player.animatorOverrideController_callBackIdle);
+        }
+        else
+        {
+            player.ReplaceRunAnimation(player.animatorOverrideController_callBackRun);
+        }
 
         transform.GetComponent<SpriteRenderer>().color=Color.white;
         isRotating = true;
@@ -309,6 +349,8 @@ public class Wrench : MonoBehaviour
 
         rb.velocity=Vector2.zero;
         rb.angularVelocity =0;
+
+        
 
         if(facing=="Right" && player.FacingRight || facing=="Left" && !player.FacingRight)
         {             
@@ -329,13 +371,15 @@ public class Wrench : MonoBehaviour
 
         Debug.Log("Rotation reset to: " + origRotation);
 
+        graphics.SetActive(false);
         isRotating = false;
         CanCallBack = false;
         isDamaged = false;
         isClicked = false;
 
-
         WrenchImpact=false;
+
+        player.ReplaceRunAnimationIdle();
 
     }
 

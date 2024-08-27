@@ -284,6 +284,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1493574848}
     m_Modifications:
+    - target: {fileID: 910750936865505532, guid: d6238db65f42ca9409aa82125f626ba3,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2434675478675569420, guid: d6238db65f42ca9409aa82125f626ba3,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439000540550450372, guid: d6238db65f42ca9409aa82125f626ba3,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2589627313922811050, guid: d6238db65f42ca9409aa82125f626ba3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -389,10 +404,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3858119426269724776, guid: d6238db65f42ca9409aa82125f626ba3,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5114704448550174990, guid: d6238db65f42ca9409aa82125f626ba3,
         type: 3}
       propertyPath: m_text
       value: Test test
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087424787275284867, guid: d6238db65f42ca9409aa82125f626ba3,
+        type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9196871581083444255, guid: d6238db65f42ca9409aa82125f626ba3,
         type: 3}

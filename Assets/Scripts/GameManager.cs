@@ -31,10 +31,25 @@ public class GameManager : MonoBehaviour
     {
         LoadingLevel=false;
         PlayerMove=FindObjectOfType<playerMovement>();
-        UIHandler.instance.setHealthAtStart(playerStats.MaxHealth);
         PlayerAttack=FindObjectOfType<playerMeleeAttack>();
 
         currentState=gameStatus.Run;
+    }
+
+    IEnumerator DestroyWithTimeObject(Transform obj,float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        Destroy(obj.gameObject);
+    }
+    public void DestroyGameObjectTime(Transform obj,float time)
+    {
+        StartCoroutine(DestroyWithTimeObject(obj,time));
+    }
+
+    public void ShakeCamera(string EasyMediumHard)
+    {
+        cameraShake.instance.StartShakeCoroutine(EasyMediumHard);
     }
 
     public void AddUIItem(Sprite Icon)
@@ -55,7 +70,15 @@ public class GameManager : MonoBehaviour
     
     public void EndLevel()
     {
-        Debug.Log("End Level");
+        if(!LoadingLevel)
+        {
+            LoadingLevel=true;
+             Debug.Log("End Level");
+            LevelManager.MoveToNextScene();
+        }
+
+       
+
     }
 
     public void GameOver()
@@ -69,10 +92,86 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void GameOverSequence(bool winscreen)
+    {
+        Sound_Manager.instance.PlayerSoundHandler_Loop.Stop();
+        Sound_Manager.instance.PlayerSoundHandler_Once.Stop();
+        if(!winscreen)
+        {
+            //Restart Level
+            var checkpoint=PositionManager.instance.GetLastCheckpoint();
+            if(checkpoint==null)
+            {
+                PlayerMove.GetComponent<Transform>().tag="NoCollision";
+                currentState=gameStatus.Pause;
+            
+                PlayerMove.DeathAnimation();
+                Sound_Manager.instance.playerSoundOnce("Die");                        
+
+                UIHandler.instance.StopAllCoroutines();
+                UIHandler.instance.DialogueWindow.gameObject.SetActive(false);
+                UIHandler.instance.StartCoroutine(UIHandler.instance.GameOver(winscreen));
+            }
+            else
+            {
+                //respawnToCheckpoint
+                PlayerMove.GetComponent<Transform>().tag="NoCollision";
+                currentState=gameStatus.Pause;
+            
+                PlayerMove.DeathAnimation();
+                Sound_Manager.instance.playerSoundOnce("Die"); 
+
+                 UIHandler.instance.StopAllCoroutines();
+                UIHandler.instance.DialogueWindow.gameObject.SetActive(false);
+                StartCoroutine(respawnToCheckpoint(checkpoint));
+            }
+            
+        }
+        else
+        {
+            //End level go to next one
+            PlayerMove.GetComponent<Transform>().tag="NoCollision";
+            currentState=gameStatus.Pause;            
+
+            UIHandler.instance.StopAllCoroutines();
+            UIHandler.instance.DialogueWindow.gameObject.SetActive(false);
+            UIHandler.instance.StartCoroutine(UIHandler.instance.GameOver(winscreen));
+        }
+        
+
+    }
+
+    public  IEnumerator respawnToCheckpoint(checkPointHandler checkpoint)
+    {
+        yield return new WaitForSeconds(2f);
+
+        PlayerMove.gameObject.SetActive(false);
+        PlayerMove.Graphics.transform.localPosition= PlayerMove.GraphicsOrigPos;
+        PlayerMove.transform.position=(Vector2)checkpoint.position;  
+        PlayerMove.restorePlayerMovement();
+        PlayerMove.gameObject.GetComponent<PlayStats>().CurrentHealth=checkpoint.currentHealth;   
+        PlayerMove.GetComponent<Transform>().tag="Player";
+        PlayerMove.ResetAllAnimationTrigger();
+        PlayerMove.anim.SetTrigger("Idle");
+
+
+        yield return new WaitForSeconds(1f);
+
+        currentState=gameStatus.Run;
+
+         PlayerMove.gameObject.SetActive(true);
+
+        checkpoint.respawn();
+
+    }
+
+
+
     public void PauseMenu()
     {
         currentState= gameStatus.Pause;
         UIHandler.instance.PauseMenu.SetActive(true);
+        Sound_Manager.instance.environmentSoundOnce("Pause");
         Debug.Log("Pause");
     }
 
@@ -85,6 +184,7 @@ public class GameManager : MonoBehaviour
     {
         currentState= gameStatus.Run;
         UIHandler.instance.PauseMenu.SetActive(false);
+        Sound_Manager.instance.environmentSoundOnce("UnPause");
         Debug.Log("Un Pause");
     }
 

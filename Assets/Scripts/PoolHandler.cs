@@ -12,6 +12,8 @@ public class PoolHandler : MonoBehaviour
     private List<GameObject> pool; // The pool of objects
     private Transform poolParent; // The parent transform for pooled objects
 
+    public AudioSource audiosource;
+
     private void Awake()
     {
         
@@ -59,6 +61,7 @@ public class PoolHandler : MonoBehaviour
                 {                    
                     child.gameObject.transform.SetParent(null);
                     child.gameObject.SetActive(true);
+                    audiosource.Play();
                     break;
                 }
             }

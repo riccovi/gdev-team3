@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,12 @@ public class InputManager : MonoBehaviour
             {
                 GameManager.instance.UnPauseMenu();
             }
+        }
+
+        //all inputs except movement and attack
+        if(GameManager.instance.currentState==GameManager.gameStatus.Run)
+        {
+
         }
     }
 }

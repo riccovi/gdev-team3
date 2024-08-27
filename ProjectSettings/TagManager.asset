@@ -11,6 +11,8 @@ TagManager:
   - Ladder
   - Concrete
   - Rope
+  - DeathZone
+  - NoCollision
   layers:
   - Default
   - TransparentFX
@@ -24,9 +26,9 @@ TagManager:
   - Ladder
   - Destractable
   - Rope
-  - 
-  - 
-  - 
+  - NPC
+  - Player
+  - BoxStopper
   - 
   - 
   - 
