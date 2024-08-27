@@ -82,12 +82,16 @@ public class LevelManager : MonoBehaviour
 
         // Calculate the next scene's build index
         int nextSceneIndex = currentScene.buildIndex + 1;
+        
+        
 
         // Check if the next scene index is within the valid range
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             // Load the next scene
-            LoadScene(currentScene.name);
+            string nextSceneName = NameFromIndex(nextSceneIndex);
+            Debug.Log("Next scene " + nextSceneIndex + " Name:" + nextSceneName);
+            LoadScene(nextSceneName);
         }
         else
         {
@@ -97,6 +101,15 @@ public class LevelManager : MonoBehaviour
 
         // Unload all inactive scenes to free up memory
         UnloadInactiveScenes();
+    }
+
+    private static string NameFromIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
     }
 
     public void BackMainMenu()

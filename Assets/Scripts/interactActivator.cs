@@ -8,7 +8,7 @@ public class interactActivator : Activator
     public enum activateTyp
     {
         PressButtonE,
-        OnObjectPlacement
+        OnObjectPlayerPlacement,
 
     }
 
@@ -78,16 +78,36 @@ public class interactActivator : Activator
             SpriteTip.gameObject.SetActive(true);
         }
 
-        if(ActivationType==activateTyp.OnObjectPlacement)
+        if(ActivationType==activateTyp.OnObjectPlayerPlacement)
         {
             //Activate With Anything Else
-            if(currentStatus==PlatformStatus.Disable && !other.CompareTag("Player"))
+            if(currentStatus==PlatformStatus.Disable)
             {
                  onEnable();
                  Debug.Log("Activate A");
             }
         }
+
         
+    }
+
+     private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Player") && SpriteTip!=null)
+        {
+            SpriteTip.gameObject.SetActive(false);
+        }
+
+        if(ActivationType==activateTyp.OnObjectPlayerPlacement)
+        {
+            //Activate With Anything Else
+            if(currentStatus==PlatformStatus.Enable)
+            {
+                onDissable();
+                Debug.Log("Activate C" + other.name);
+                currentStatus=PlatformStatus.Disable;
+            }
+        }
+
     }
 
     void OnTriggerStay2D(Collider2D other) {
@@ -118,21 +138,5 @@ public class interactActivator : Activator
         
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.CompareTag("Player") && SpriteTip!=null)
-        {
-            SpriteTip.gameObject.SetActive(false);
-        }
-
-        if(ActivationType==activateTyp.OnObjectPlacement)
-        {
-            //Activate With Anything Else
-            if(currentStatus==PlatformStatus.Enable && !other.CompareTag("Player"))
-            {
-                onDissable();
-                Debug.Log("Activate C" + other.name);
-                currentStatus=PlatformStatus.Disable;
-            }
-        }
-    }
+   
 }
