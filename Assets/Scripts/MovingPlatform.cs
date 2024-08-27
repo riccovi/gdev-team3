@@ -43,6 +43,7 @@ public class MovingPlatform : MonoBehaviour
 
     public void startMovement()
     {
+        audiosource.Play();
         Activate=true;
         Debug.Log("startMovement");
         CurrentSpeed=MaxSpeed;
@@ -56,6 +57,7 @@ public class MovingPlatform : MonoBehaviour
 
     public void StopMovement()
     {
+        audiosource.Stop();
         Debug.Log("stopMovement");
         Activate=false;
         CurrentSpeed=0;

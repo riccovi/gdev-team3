@@ -71,6 +71,8 @@ public class interactActivator : Activator
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+
+        
         if(other.CompareTag("Player") && SpriteTip!=null )
         {
             SpriteTip.gameObject.SetActive(true);
@@ -79,36 +81,40 @@ public class interactActivator : Activator
         if(ActivationType==activateTyp.OnObjectPlacement)
         {
             //Activate With Anything Else
-            if(currentStatus==PlatformStatus.Disable)
+            if(currentStatus==PlatformStatus.Disable && !other.CompareTag("Player"))
             {
                  onEnable();
-            }
-            else
-            {
-                onDissable();
+                 Debug.Log("Activate A");
             }
         }
         
     }
 
     void OnTriggerStay2D(Collider2D other) {
-
+        
         if(ActivationType==activateTyp.PressButtonE)
         {
-            if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+            if(ActivationType==activateTyp.PressButtonE)
             {
-                if(currentStatus==PlatformStatus.Disable)
+                if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
                 {
-                    onEnable();
-                    currentStatus=PlatformStatus.Enable;
-                }
-                else
-                {
-                    onDissable();
-                    currentStatus=PlatformStatus.Disable;
+                    if(currentStatus==PlatformStatus.Disable)
+                    {
+                        onEnable();
+                        currentStatus=PlatformStatus.Enable;
+                    }
+                    else
+                    {
+                        onDissable();
+                        currentStatus=PlatformStatus.Disable;
+                    }
+
+                    Debug.Log("Activate B");
                 }
             }
+
         }
+        
         
     }
 
@@ -121,14 +127,10 @@ public class interactActivator : Activator
         if(ActivationType==activateTyp.OnObjectPlacement)
         {
             //Activate With Anything Else
-            if(currentStatus==PlatformStatus.Disable)
-            {
-                 onEnable();
-                 currentStatus=PlatformStatus.Enable;
-            }
-            else
+            if(currentStatus==PlatformStatus.Enable && !other.CompareTag("Player"))
             {
                 onDissable();
+                Debug.Log("Activate C" + other.name);
                 currentStatus=PlatformStatus.Disable;
             }
         }

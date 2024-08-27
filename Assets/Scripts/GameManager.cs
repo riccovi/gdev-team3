@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public class GameManager : MonoBehaviour
         PlayerAttack=FindObjectOfType<playerMeleeAttack>();
 
         currentState=gameStatus.Run;
+
+
+        //On second Level Double jump upgrade is available
+        if(SceneManager.GetActiveScene().name=="2.Level1")
+        {
+            UpgradeDoubleJump();
+        }
     }
 
     IEnumerator DestroyWithTimeObject(Transform obj,float time)

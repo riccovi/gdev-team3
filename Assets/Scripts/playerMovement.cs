@@ -30,7 +30,7 @@ public class playerMovement : MonoBehaviour
     public float jumpHeight;
     public float jumpHeight2;
     public int ExtraJumps;
-    public float fallMultiplier=1.35f;
+    public float fallMultiplier=1.55f;
     public float JumpTimeHold;
 
     public bool canPlayerJump;
@@ -251,16 +251,8 @@ public class playerMovement : MonoBehaviour
         }
 
         var ymove = 0f;
-        if(!isClimbing)
-        {
-            
-        }
-        else
-        {
-            //try to clampn notwork
-        }
 
-        ymove=rb.velocity.y+YPlatformVelocity.y;
+        ymove=rb.velocity.y;
 
         rb.velocity = new Vector2(moveInput * (movementSpeed - PenalyMovement), ymove);
 
@@ -673,6 +665,7 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
+                Debug.Log("secondJump");
                 currentJumpHeigh=jumpHeight2;
 
                 
@@ -684,7 +677,18 @@ public class playerMovement : MonoBehaviour
                 jumpTimeCounter = JumpTimeHold;
             }            
 
-            rb.velocity = Vector2.up * currentJumpHeigh;
+            if(CurrentJumps==ExtraJumps)
+            {
+                Debug.Log("firstJump");
+                rb.velocity = Vector2.up * currentJumpHeigh;
+            }
+            else
+            {
+                rb.velocity = Vector2.up * (currentJumpHeigh-jumpHeight*0.75f);
+                Debug.Log("secondJump");
+                
+            }
+            //rb.velocity = Vector2.up * currentJumpHeigh;
             Debug.Log("Jump Height : " + currentJumpHeigh);           
 
             

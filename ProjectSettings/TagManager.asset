@@ -13,6 +13,7 @@ TagManager:
   - Rope
   - DeathZone
   - NoCollision
+  - Nails
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - NPC
   - Player
   - BoxStopper
-  - 
-  - 
+  - NoActivationLevier
+  - ButtonLevier
   - 
   - 
   - 

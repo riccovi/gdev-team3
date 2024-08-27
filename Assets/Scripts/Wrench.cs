@@ -369,6 +369,8 @@ public class Wrench : MonoBehaviour
         
         //transform.rotation = origRotationGlobal;
 
+        player.ThrowMode=false;
+
         Debug.Log("Rotation reset to: " + origRotation);
 
         graphics.SetActive(false);
