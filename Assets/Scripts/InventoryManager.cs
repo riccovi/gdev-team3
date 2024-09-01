@@ -31,11 +31,7 @@ public class InventoryManager : MonoBehaviour
         if(objPrefab.name=="Upgrade_DoubleJump")
         {
             GameManager.instance.UpgradeDoubleJump();
-            if(objPrefab!=null)
-            {
-                Destroy(objPrefab);
-            }
-
+            Destroy(objPrefab);
             return;
         }
         if(CurrentInventory<=InventorySize)
@@ -50,11 +46,7 @@ public class InventoryManager : MonoBehaviour
                 InventoryID.Add("00x00");
             }
             
-            if(objPrefab!=null)
-            {
-                Destroy(objPrefab);
-            }
-
+            Destroy(objPrefab);
 
         }
     }

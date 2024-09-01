@@ -19,9 +19,5 @@ public class PlayerCollision : MonoBehaviour
             playerRenderer.color = Color.red;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (collision.gameObject.tag == "Pool"){
-            playerRenderer.color = Color.yellow;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
 }

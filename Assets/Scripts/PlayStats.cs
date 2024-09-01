@@ -36,7 +36,7 @@ public class PlayStats : MonoBehaviour
 
         if(CurrentHealth==0)
         {
-            GameManager.instance.GameOverSequence(false);
+            GameManager.instance.GameOver();
         }
 
     }

@@ -16,8 +16,6 @@ public class DoorActivator : Activator
 
     [Header("Assign Push Levier Animator")]
     public Animator ActivatorAnimation;
-
-     public string SoundActivation;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +32,6 @@ public class DoorActivator : Activator
     {
         Debug.Log("Activate Door");
         Door.SetTrigger("OpenDoor");
-        Sound_Manager.instance.environmentSoundOnce("DoorUnlock");
         ActivatorAnimation.SetTrigger("Push");
     }
 

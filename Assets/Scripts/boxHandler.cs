@@ -5,7 +5,6 @@ using UnityEngine;
 public class boxHandler : MonoBehaviour
 {
     public playerMovement player;
-    public string side;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +23,7 @@ public class boxHandler : MonoBehaviour
         {
             player = other.GetComponent<playerMovement>();
             player.pullBox= transform.parent.GetComponent<Rigidbody2D>();
-            player.side=name;
             Debug.Log("Player on on side of box");
-            Debug.Log("Side"+ name);
         }        
     }
 
@@ -36,9 +33,7 @@ public class boxHandler : MonoBehaviour
         {        
             Debug.Log("Player exiting side of box");
             player.pullBox=null;
-            player.side="";
             player=null;
-            transform.parent.GetComponent<Rigidbody2D>().bodyType= RigidbodyType2D.Static;
         }
     }  
 }

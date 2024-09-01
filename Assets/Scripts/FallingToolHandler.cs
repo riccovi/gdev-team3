@@ -16,14 +16,13 @@ public class FallingToolHandler : MonoBehaviour
     void Start()
     {
         rb=transform.parent.GetComponent<Rigidbody2D>();
-        rb.gravityScale=accelerationGravity;
     }
 
     private void FixedUpdate()
     {
         if (rb.velocity.y < 0) // Ensure the object is falling
         {
-            rb.velocity += Vector2.down * Time.fixedDeltaTime;
+            rb.velocity += Vector2.down * accelerationGravity * Time.fixedDeltaTime;
         }
     }
 
@@ -35,7 +34,6 @@ public class FallingToolHandler : MonoBehaviour
 
 
     void OnTriggerEnter2D(Collider2D other) {
-
         if(other.CompareTag("Player"))
         {
             other.GetComponent<PlayStats>().removeHealth(Damage);
