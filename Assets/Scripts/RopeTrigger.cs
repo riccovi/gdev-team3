@@ -24,6 +24,7 @@ public class RopeTrigger : Destractable
         HangingObject.transform.SetParent(null);
         HangingObject.gravityScale=1;
         HangingObject.bodyType=RigidbodyType2D.Dynamic;
+        HangingObject.freezeRotation=true;
 
         hideRope.SetTrigger("HideRope");
     }

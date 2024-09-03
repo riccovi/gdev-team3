@@ -204,8 +204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2e9af3f314aee46baf4f3b88ef2f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShake: 0
   MaxHealth: 0
   currentHealth: 0
+  DestroySound: 
+  DestroyEffect: {fileID: 0}
   hideRope: {fileID: 3025610807552838171}
   HangingObject: {fileID: 3025610807618982524}
 --- !u!1 &3025610808342937153

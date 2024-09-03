@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +18,50 @@ public class UIHandler : MonoBehaviour
     public Transform InventoryParent;
     public GameObject InvPrefab;
 
-    private void Awake() {
+    [Header("Pause")]
+    public GameObject PauseMenu;
+
+    [Header("Game Over")]
+    public GameObject GameOverWindow;
+
+    [Header("Winning Screen")]
+    public GameObject WinWindow;
+
+    [Header("Dialogue")]
+    public GameObject DialogueWindow;
+
+    public Transform Background;
+    public TextMeshProUGUI textDialogue;
+
+    public float ScaleTime=2.0f;
+
+    public float TextApearTime=3.0f;
+
+    public float AfterTextWait=3f;
+
+    private float WaitTime=5.0f;
+
+    private Vector3 BackgroundOrigScale;
+
+    public AudioClip popUpSound;
+
+
+
+    void Awake() {
         instance=this;
+        
     }
     void Start()
     {
+        WaitTime=TextApearTime+AfterTextWait;
         //setup UI health
+        Background=DialogueWindow.transform.Find("Background");
+        textDialogue=DialogueWindow.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+
+        BackgroundOrigScale = Background.localScale;
+
+        setHealthAtStart(GameManager.instance.playerStats.MaxHealth);
+        setInventory(GameManager.instance.PlayerMove.GetComponent<InventoryManager>().InventorySize);
     }
 
     public void setInventory(int Size)
@@ -34,6 +73,75 @@ public class UIHandler : MonoBehaviour
             obj.name="0x0";
         }
     }
+
+    public void ActivatePopUp()
+    {
+        DialogueWindow.gameObject.SetActive(true);
+        StartCoroutine(ScaleOverTime(ScaleTime,"0000",WaitTime));
+    }
+
+    public void ActivatePopUp(string text)
+    {
+        StopAllCoroutines();
+        textDialogue.text="";
+
+        DialogueWindow.gameObject.SetActive(true);
+        StartCoroutine(ScaleOverTime(ScaleTime,text,WaitTime));
+    }
+
+    IEnumerator ScaleOverTime(float duration,string Text,float WaitTime)
+    {
+        Debug.Log("Scale");
+        // Get the current scale (should be Vector3.zero initially)
+        Vector3 initialScale = Vector3.zero;
+
+        // Calculate the amount of time passed
+        float timePassed = 0f;
+
+        // Loop until the timePassed is greater than duration
+        while (timePassed < duration)
+        {
+            // Increment timePassed by the time passed since the last frame
+            timePassed += Time.deltaTime;
+
+            // Calculate the progress (0 to 1)
+            float progress = Mathf.Clamp01(timePassed / duration);
+
+            // Lerp between the initial scale and the original scale based on progress
+            Background.localScale = Vector3.Lerp(initialScale, BackgroundOrigScale, progress);
+
+            // Yield the coroutine until the next frame
+            yield return null;
+        }
+
+        // Ensure the final scale is exactly the original scale
+        Background.localScale = BackgroundOrigScale;
+
+        textDialogue.gameObject.SetActive(true);
+
+        StartCoroutine(TypeText(textDialogue,Text));
+
+        yield return new WaitForSeconds(WaitTime);
+
+        textDialogue.gameObject.SetActive(false);
+
+        DialogueWindow.gameObject.SetActive(false);
+
+
+    }
+
+    IEnumerator TypeText(TMP_Text textComponent,string fullText)
+    {
+        textComponent.text = ""; // Clear the initial text
+        float timePerCharacter = TextApearTime / fullText.Length; // Calculate time per character
+
+        foreach (char letter in fullText.ToCharArray())
+        {
+            textComponent.text += letter;
+            yield return new WaitForSeconds(timePerCharacter);
+        }
+    }
+
 
     public void addInventory(string ID,Sprite ico)
     {
@@ -62,6 +170,39 @@ public class UIHandler : MonoBehaviour
             }
         }
         Debug.Log("No inactive child found.");
+    }
+
+    public IEnumerator GameOver(bool winscreen)
+    {
+        yield return new WaitForSeconds(1);
+        GameManager.instance.currentState=GameManager.gameStatus.Pause;
+
+        if(winscreen)
+        {
+            Sound_Manager.instance.environmentSoundOnce("CompleteLevel");
+            WinWindow.gameObject.SetActive(true);
+        }
+        else
+        {
+            Sound_Manager.instance.environmentSoundOnce("Deathscreen");
+            GameOverWindow.gameObject.SetActive(true);
+        }
+        
+        
+        
+
+        yield return new WaitForSeconds(3);
+
+        if(winscreen)
+        {
+            GameManager.instance.EndLevel();
+        }
+        else
+        {
+            GameManager.instance.GameOver();
+        }
+
+        
     }
 
     
