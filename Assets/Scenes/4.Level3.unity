@@ -4759,7 +4759,7 @@ PrefabInstance:
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
       propertyPath: FallToolColor.b
-      value: 0
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
@@ -4769,7 +4769,7 @@ PrefabInstance:
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
       propertyPath: FallToolColor.r
-      value: 1
+      value: 0.6666667
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1691960e3de77e45a3ac5655570279e, type: 3}
@@ -11417,7 +11417,7 @@ PrefabInstance:
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
       propertyPath: FallToolColor.b
-      value: 0
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
@@ -11427,7 +11427,7 @@ PrefabInstance:
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
       propertyPath: FallToolColor.r
-      value: 1
+      value: 0.6666667
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1691960e3de77e45a3ac5655570279e, type: 3}
@@ -15955,7 +15955,7 @@ PrefabInstance:
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
       propertyPath: FallToolColor.b
-      value: 0
+      value: 0.8980392
       objectReference: {fileID: 0}
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
@@ -15965,7 +15965,7 @@ PrefabInstance:
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
       propertyPath: FallToolColor.r
-      value: 1
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 2893382136811800463, guid: c1691960e3de77e45a3ac5655570279e,
         type: 3}
