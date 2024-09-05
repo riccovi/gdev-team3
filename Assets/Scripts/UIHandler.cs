@@ -14,7 +14,7 @@ public class UIHandler : MonoBehaviour
 
     public GameObject healthPrefab;
 
-    [Header("Ivnentory")]
+    [Header("Inventory")]
     public Transform InventoryParent;
     public GameObject InvPrefab;
 

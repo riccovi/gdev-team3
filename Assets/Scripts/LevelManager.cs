@@ -32,6 +32,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // Restarts level if 'R' is pressed
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartLevel();
+        }
+    }
+
 
     public async void LoadScene(string SceneName)
     {
@@ -61,7 +70,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void RestartLevel()
+    public void RestartLevel() 
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
