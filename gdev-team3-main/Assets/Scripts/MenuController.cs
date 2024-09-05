@@ -36,7 +36,7 @@ public class MenuController : MonoBehaviour
             }
         }
 
-        // Load saved volume and apply it
+        // Load saved volume and apply it.
         if (PlayerPrefs.HasKey("Volume"))
         {
             float savedVolume = PlayerPrefs.GetFloat("Volume");
