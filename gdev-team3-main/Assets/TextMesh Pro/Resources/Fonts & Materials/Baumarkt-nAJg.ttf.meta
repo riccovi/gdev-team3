@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d8dc18c92a8ed7547a6555ea7f0d7e10
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Baumarkt
+  fontNames:
+  - Baumarkt
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 60e79e03a2f3dd34bbe59ca01ac94c1a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
