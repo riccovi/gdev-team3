@@ -38,27 +38,35 @@ public class playerMeleeAttack : MonoBehaviour
 
     private void AttackControllers()
     {
-        if (!checkWrenchStatus.isClicked && !checkWrenchStatus.CanCallBack)
+
+        //You can attack when you are on air, to evada bugs
+
+        if(player.isGrounded)
         {
-            if (timeBetweenAttack <= 0)
+            if (!checkWrenchStatus.isClicked && !checkWrenchStatus.CanCallBack)
             {
-                weapon.color = Color.white;
-                //Debug.Log("Can Attack");
-                if (Input.GetMouseButtonDown(0))
+                if (timeBetweenAttack <= 0)
                 {
-                    player.Attack();
+                    weapon.color = Color.white;
+                    //Debug.Log("Can Attack");
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        player.Attack();
 
-                    //animation delay
-                    Invoke("DoDamage",0.2f);
+                        //animation delay
+                        Invoke("DoDamage",0.2f);
 
+                    }
                 }
-            }
-            else
-            {
-                timeBetweenAttack -= Time.deltaTime;
+                else
+                {
+                    timeBetweenAttack -= Time.deltaTime;
+                }
+
             }
 
         }
+        
     }
 
     private void DoDamage()

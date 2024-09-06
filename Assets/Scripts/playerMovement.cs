@@ -533,6 +533,17 @@ public class playerMovement : MonoBehaviour
         else
         {
             isClimbing=false;
+
+            //reset animation to idle or jump on air
+            /* ResetAllAnimationTrigger();
+            if(isGrounded)
+            {                
+                anim.SetTrigger("Idle");
+            }
+            else
+            {
+                anim.SetTrigger("Jump");
+            } */
         }
 
         if(isClimbing)
