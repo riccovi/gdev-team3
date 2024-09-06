@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         instance=this;
         playerStats =GameObject.FindObjectOfType<PlayStats>();
+        LevelManager = GameObject.FindObjectOfType<LevelManager>();
     }
     void Start()
     {
