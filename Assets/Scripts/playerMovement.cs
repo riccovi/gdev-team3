@@ -99,6 +99,8 @@ public class playerMovement : MonoBehaviour
 
     public float lastY;
 
+    private bool previousIsClimbing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,9 +121,14 @@ public class playerMovement : MonoBehaviour
     }
 
 
+
+
     // Handle Physics
     private void FixedUpdate()
     {
+        
+
+
         if(GameManager.instance.currentState==GameManager.gameStatus.Run)
         {
             if(GameManager.instance.currentState==GameManager.gameStatus.Run)
@@ -137,6 +144,19 @@ public class playerMovement : MonoBehaviour
         {
             rb.velocity=Vector2.zero;
         }
+
+        //Fix for animation when leaving ladder
+        // Check if the variable has changed from true to false
+        if (previousIsClimbing == true && isClimbing == false) 
+        {
+            // The variable changed from true to false
+            ResetAllAnimationTrigger();
+            anim.speed=1;
+            anim.SetTrigger("Idle");
+        }
+
+        // Update the previous state to the current state
+        previousIsClimbing = isClimbing;
         
         
     }
@@ -535,6 +555,8 @@ public class playerMovement : MonoBehaviour
             isClimbing=false;
 
             //reset animation to idle or jump on air
+            //ResetAllAnimationTrigger();
+            //anim.SetTrigger("Idle");
             /* ResetAllAnimationTrigger();
             if(isGrounded)
             {                
@@ -553,6 +575,15 @@ public class playerMovement : MonoBehaviour
             //Sound_Manager.instance.playSound("Player_Loop",Sound_Manager.instance.Climb);
 
             inputVertical=Input.GetAxisRaw("Vertical");
+
+            if(inputVertical==0)
+            {
+                anim.speed=0;
+            }
+            else
+            {
+                anim.speed=1;
+            }
             rb.velocity = new Vector2(rb.velocity.x,inputVertical*climbSpeed);
             rb.gravityScale=0;
 
