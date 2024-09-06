@@ -3190,13 +3190,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1127718072}
-  - {fileID: 1013915447}
   - {fileID: 343374333}
   - {fileID: 671600955}
   - {fileID: 578590264}
   - {fileID: 351724608}
   - {fileID: 1662256473}
   - {fileID: 1937125375}
+  - {fileID: 1013915447}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3803,7 +3803,7 @@ Transform:
   m_LocalScale: {x: 0.336433, y: 0.336433, z: 0.336433}
   m_Children: []
   m_Father: {fileID: 278850547}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &343374334
 MonoBehaviour:
@@ -3983,7 +3983,7 @@ RectTransform:
   - {fileID: 175804752}
   - {fileID: 1563472461}
   m_Father: {fileID: 278850547}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7200,7 +7200,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 278850547}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &582766551
 GameObject:
@@ -7676,7 +7676,7 @@ Transform:
   - {fileID: 192348668}
   - {fileID: 1927045909}
   m_Father: {fileID: 278850547}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &671600956
 MonoBehaviour:
@@ -10608,7 +10608,7 @@ Transform:
   - {fileID: 1125590765}
   - {fileID: 756864648}
   m_Father: {fileID: 278850547}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1013915448
 MonoBehaviour:
@@ -17056,7 +17056,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 278850547}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1662256474
 BoxCollider2D:
@@ -19726,7 +19726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 278850547}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1937125376
 MonoBehaviour:
