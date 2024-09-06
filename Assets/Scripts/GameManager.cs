@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public playerMovement PlayerMove;
 
     public playerMeleeAttack PlayerAttack;
+
+    public InventoryManager inventory;
     
     public enum gameStatus
     {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        inventory=FindObjectOfType<InventoryManager>();
         LoadingLevel=false;
         PlayerMove=FindObjectOfType<playerMovement>();
         PlayerAttack=FindObjectOfType<playerMeleeAttack>();
@@ -38,9 +41,14 @@ public class GameManager : MonoBehaviour
 
 
         //On second Level Double jump upgrade is available
-        if(SceneManager.GetActiveScene().name=="2.Level1")
+        if(SceneManager.GetActiveScene().name!="1.Level0" && SceneManager.GetActiveScene().name!="0.MainMenu")
         {
             UpgradeDoubleJump();
+        }
+
+        if(SceneManager.GetActiveScene().name!="1.Level0" && SceneManager.GetActiveScene().name!="0.MainMenu" && SceneManager.GetActiveScene().name!="1.Level2")
+        {
+
         }
     }
 
@@ -75,6 +83,11 @@ public class GameManager : MonoBehaviour
     {
         PlayerMove.ExtraJumps=1;
     }
+
+    public void UpgradeThrowMechanic()
+    {
+        PlayerMove.GetComponent<playerMeleeAttack>().checkWrenchStatus.throwMechanicActive=true;
+    }
     
     public void EndLevel()
     {
@@ -95,10 +108,42 @@ public class GameManager : MonoBehaviour
         {
             LoadingLevel=true;
             Debug.Log("GameOver");
-            LevelManager.RestartLevel();
+
+            if(LevelManager!=null)
+            {
+                LevelManager.RestartLevel();
+            }
+            else
+            {
+                RestartLevel(); 
+            }
+
         }
 
     }
+
+     public void RestartLevel()
+    {
+        // Get the current active scene
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Reload the current scene
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    private void UnloadInactiveScenes()
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene != SceneManager.GetActiveScene())
+            {
+                SceneManager.UnloadSceneAsync(scene);
+            }
+        }
+    }
+
+
 
     public void GameOverSequence(bool winscreen)
     {

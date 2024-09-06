@@ -61,6 +61,8 @@ public class Wrench : MonoBehaviour
 
     public LayerMask WrenchCollision;
 
+    public bool throwMechanicActive=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,78 +88,83 @@ public class Wrench : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButton(1) &&  !CanCallBack && !isClicked)
+        if(throwMechanicActive)
         {
-            Invoke("EnableGraphics",0.2f);
-            lineRenderer.enabled=true;
-            player.ThrowMode=true;
-
-            player.ReplaceRunAnimationThorw();
-            
-            //Animation
-            player.RangeAttack_getready();
-        }
-
-        selfRotation();
-
-        if (Input.GetMouseButtonUp(1) && !CanCallBack && !isClicked)
-        {
-            //Animation
-            player.RangeAttack_release();
-
-            // Cast a line from startPoint to endPoint
-            targetPosition = lineRenderer.GetPosition(1);
-        
-            RaycastHit2D hit = Physics2D.Raycast(origPos.position, targetPosition - origPos.position, Vector2.Distance(origPos.position, targetPosition),WrenchCollision);
-
-            Vector2 hitPosition=Vector2.zero;
-            // Check if the linecast hits something with the tag "Ground"
-            // Save the hit position
-
-            if (hit.collider != null )
+            if (Input.GetMouseButton(1) &&  !CanCallBack && !isClicked)
             {
+                Invoke("EnableGraphics",0.2f);
+                lineRenderer.enabled=true;
+                player.ThrowMode=true;
+
+                player.ReplaceRunAnimationThorw();
+                
+                //Animation
+                player.RangeAttack_getready();
+            }
+
+            selfRotation();
+
+            if (Input.GetMouseButtonUp(1) && !CanCallBack && !isClicked)
+            {
+                //Animation
+                player.RangeAttack_release();
+
+                // Cast a line from startPoint to endPoint
+                targetPosition = lineRenderer.GetPosition(1);
+            
+                RaycastHit2D hit = Physics2D.Raycast(origPos.position, targetPosition - origPos.position, Vector2.Distance(origPos.position, targetPosition),WrenchCollision);
+
+                Vector2 hitPosition=Vector2.zero;
+                // Check if the linecast hits something with the tag "Ground"
                 // Save the hit position
-                hitPosition = hit.point;
-                Debug.Log("Hit Position: " + hit.transform.gameObject.name);
-                onWayGround=true;
+
+                if (hit.collider != null )
+                {
+                    // Save the hit position
+                    hitPosition = hit.point;
+                    Debug.Log("Hit Position: " + hit.transform.gameObject.name);
+                    onWayGround=true;
+                }
+
+                isClicked = true;
+                lineRenderer.enabled = false;
+                
+
+                
+
+                if(hit.collider!=null)
+                {
+                    targetPosition= new Vector3(hitPosition.x,hitPosition.y,0);
+                }
+                targetPosition.z = 0; // Ensure z is 0 since it's a 2D plane
+
+                transform.parent = null;
+
+                distanceTwoLine = Vector2.Distance(origPos.position, targetPosition);
+
+                initialVelocity = (targetPosition - origPos.position).normalized * moveSpeed; // Set initial velocity
+                hasChangedDirection = false;
+
+                StartCoroutine(ThrowWrenchCoroutine(targetPosition));
+
+                
             }
 
-            isClicked = true;
-            lineRenderer.enabled = false;
-            
-
-            
-
-            if(hit.collider!=null)
+            // Return wrench on left mouse button click
+            if (Input.GetMouseButtonDown(0) && CanCallBack)
             {
-                targetPosition= new Vector3(hitPosition.x,hitPosition.y,0);
+                isDamaged = true;
+                returnWrench = true;
             }
-            targetPosition.z = 0; // Ensure z is 0 since it's a 2D plane
 
-            transform.parent = null;
-
-            distanceTwoLine = Vector2.Distance(origPos.position, targetPosition);
-
-            initialVelocity = (targetPosition - origPos.position).normalized * moveSpeed; // Set initial velocity
-            hasChangedDirection = false;
-
-            StartCoroutine(ThrowWrenchCoroutine(targetPosition));
-
+            if (returnWrench)
+            {
+                StartCoroutine(ReturnWrenchCoroutine());
+                returnWrench = false;
+            }
             
         }
-
-        // Return wrench on left mouse button click
-        if (Input.GetMouseButtonDown(0) && CanCallBack)
-        {
-            isDamaged = true;
-            returnWrench = true;
-        }
-
-        if (returnWrench)
-        {
-            StartCoroutine(ReturnWrenchCoroutine());
-            returnWrench = false;
-        }
+        
     }
 
     public void selfRotation()

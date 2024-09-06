@@ -45,6 +45,8 @@ public class UIHandler : MonoBehaviour
 
     public AudioClip popUpSound;
 
+    private bool runOnFirstFrame=true;
+
 
 
     void Awake() {
@@ -60,9 +62,9 @@ public class UIHandler : MonoBehaviour
 
         BackgroundOrigScale = Background.localScale;
 
-        setHealthAtStart(GameManager.instance.playerStats.MaxHealth);
-        setInventory(GameManager.instance.PlayerMove.GetComponent<InventoryManager>().InventorySize);
+       
     }
+
 
     public void setInventory(int Size)
     {
@@ -229,7 +231,14 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(runOnFirstFrame)
+        {
+            setHealthAtStart(GameManager.instance.playerStats.MaxHealth);
         
+            setInventory(GameManager.instance.inventory.InventorySize);
+
+            runOnFirstFrame=false;
+        }
     }
 
     public void ActivateFirstInactiveChild(Transform healthParent)

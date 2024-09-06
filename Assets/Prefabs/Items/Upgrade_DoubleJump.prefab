@@ -189,7 +189,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1da4b8d35afa8314198e7b69dc383431, type: 3}
   tipData: {fileID: 11400000, guid: a481109180955ca49a81e5d02c08aa35, type: 2}
   pickupEffect: {fileID: 298237228367485946}
-  pickupSound: 
+  pickupSound: pickUpUpgrade
 --- !u!1 &8137335648538362071
 GameObject:
   m_ObjectHideFlags: 0

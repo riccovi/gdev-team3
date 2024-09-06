@@ -38,6 +38,16 @@ public class InventoryManager : MonoBehaviour
 
             return;
         }
+        else if(objPrefab.name=="Upgrade_Throw_Mechanic")
+        {
+            GameManager.instance.UpgradeThrowMechanic();
+            if(objPrefab!=null)
+            {
+                Destroy(objPrefab);
+            }
+
+            return;
+        }
         if(CurrentInventory<=InventorySize)
         {
             if(ObjectID!=null)
