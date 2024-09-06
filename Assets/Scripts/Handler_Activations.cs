@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Handler_Activations : MonoBehaviour
 {
+    public Wrench wrench;
     // Start is called before the first frame update
     void Start()
     {
-        
+        wrench=transform.parent.GetComponent<Wrench>();
     }
 
     // Update is called once per frame
@@ -25,6 +26,10 @@ public class Handler_Activations : MonoBehaviour
             transform.parent.GetComponent<Wrench>().StopThrowMovement();
 
             activator.onEnable();
+        }
+        else if(other.CompareTag("Rope") && wrench.isRotating)//is on move
+        {
+            other.GetComponent<RopeTrigger>().doDamage(1);
         }
         
     }
