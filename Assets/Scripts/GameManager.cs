@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name!="1.Level0" && SceneManager.GetActiveScene().name!="0.MainMenu" && SceneManager.GetActiveScene().name!="1.Level2")
         {
-
+            UpgradeThrowMechanic();
         }
     }
 
