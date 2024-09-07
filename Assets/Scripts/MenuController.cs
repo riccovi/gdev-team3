@@ -15,6 +15,8 @@ public class MenuController : MonoBehaviour
     public Slider volumeSlider;      // Reference to volume slider
     public GameObject creditsPanel;  // Reference to the Credits Panel
 
+    public LevelManager levelManager;
+
     // Apply saved brightness when the scene starts
     void Start()
     {
@@ -60,7 +62,7 @@ public class MenuController : MonoBehaviour
     // Play button
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        LevelManager.BackMainMenu();
     }
 
     // Settings button
