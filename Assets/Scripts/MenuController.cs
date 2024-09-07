@@ -62,7 +62,7 @@ public class MenuController : MonoBehaviour
     // Play button
     public void PlayGame()
     {
-        LevelManager.BackMainMenu();
+        levelManager.StartGame();
     }
 
     // Settings button
