@@ -579,6 +579,7 @@ public class playerMovement : MonoBehaviour
             if(inputVertical==0)
             {
                 anim.speed=0;
+                Sound_Manager.instance.playerSoundLoopStop();
             }
             else
             {

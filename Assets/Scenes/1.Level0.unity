@@ -5092,6 +5092,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloudBlury2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7942593344766863658, guid: 7b82913247ac1134b9da5b239e22abbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b82913247ac1134b9da5b239e22abbc, type: 3}
 --- !u!1001 &342692822
@@ -7159,7 +7164,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 50616738cfd4c5044a0835397c8109c7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.357
+  m_Volume: 0.223
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12940,7 +12945,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13191,6 +13196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CloudBlury2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942593344766863658, guid: 7b82913247ac1134b9da5b239e22abbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b82913247ac1134b9da5b239e22abbc, type: 3}
@@ -13981,7 +13991,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.37
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16527,7 +16537,7 @@ PrefabInstance:
     - target: {fileID: 1070625751290186053, guid: 7b82913247ac1134b9da5b239e22abbc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.870003
+      value: -32.83
       objectReference: {fileID: 0}
     - target: {fileID: 1070625751290186053, guid: 7b82913247ac1134b9da5b239e22abbc,
         type: 3}
@@ -16583,6 +16593,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CloudBlury2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942593344766863658, guid: 7b82913247ac1134b9da5b239e22abbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b82913247ac1134b9da5b239e22abbc, type: 3}
@@ -17252,7 +17267,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -28998,7 +29013,7 @@ PrefabInstance:
     - target: {fileID: 439799307692105057, guid: 85b6287ebc68bdd40b64e93e9234641d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.52
+      value: -14.63
       objectReference: {fileID: 0}
     - target: {fileID: 439799307692105057, guid: 85b6287ebc68bdd40b64e93e9234641d,
         type: 3}
@@ -32606,7 +32621,7 @@ PrefabInstance:
     - target: {fileID: 7795375277524884707, guid: 10813754fc7b67e498b57c6b55c4477a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.32
+      value: -9.1
       objectReference: {fileID: 0}
     - target: {fileID: 7795375277524884707, guid: 10813754fc7b67e498b57c6b55c4477a,
         type: 3}

@@ -168,10 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92dd72508c68544a97ebc836471af24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Platform: {fileID: 0}
+  ActivationType: 0
+  ObjectToActivate: {fileID: 0}
   ActivatorAnimation: {fileID: 602799937303122794}
   tipData: {fileID: 0}
   SpriteTip: {fileID: 39741643}
+  soundEffectEnable: Levier_Enable
+  soundEffectDisable: Levier_Disable
   currentStatus: 0
 --- !u!61 &1052218282
 BoxCollider2D:
@@ -268,7 +271,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0.5013487, b: 0, a: 1}
   m_FlipX: 0

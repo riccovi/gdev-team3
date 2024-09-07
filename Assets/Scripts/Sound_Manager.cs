@@ -79,6 +79,12 @@ public class Sound_Manager : MonoBehaviour
 
     }
 
+    public void playerSoundLoopStop()
+    {
+        AudioSource TargetAudiosource=PlayerSoundHandler_Loop;
+        TargetAudiosource.Stop();
+    }
+
     private void playClip(AudioSource TargetSource,string sound_name)
     {
         var sound =GetAudioClip(sound_name);
