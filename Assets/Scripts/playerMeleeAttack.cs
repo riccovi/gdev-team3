@@ -81,6 +81,7 @@ public class playerMeleeAttack : MonoBehaviour
             destractable[i].GetComponent<Destractable>().doDamage(damage);
 
         }
+        player.attackAnim=false;
         timeBetweenAttack = startTimeBtwAttack;
     }
 
